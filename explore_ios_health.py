@@ -29,9 +29,6 @@ sc = DataManager.grouped_by_date_df(
 st = DataManager.grouped_by_date_df(
     df, 'HKQuantityTypeIdentifierAppleStandTime', 'standTime(min)', 'sum')
 
-# Format different columns in different dataframes
-wd['walkingRunningDistance(m)'] = wd['walkingRunningDistance(km)'] * 1000.0
-
 # Merge dataframes together
 merged_df = DataManager.merge([hr, wd, aeb, sc, st])
 merged_df = merged_df.reset_index()
@@ -44,7 +41,13 @@ merged_df = DataManager.handle_nan(merged_df)
 
 # Get an overview
 merged_df = merged_df[['date', 'startTime', 'weekday',
-                       'heartRate(BPM)', 'standTime(min)', 'activeEnergyBurned(kal)', 'walkingRunningDistance(m)', 'walkingRunningDistance(km)']]
+                       'heartRate(BPM)', 'standTime(min)', 'stepCount', 'activeEnergyBurned(kal)', 'walkingRunningDistance(km)']]
+
+# Create a new data frame with averaged and summed data for date
+date_df = DataFormatter.date_df(merged_df)
+
+# Merge both data frames into one
+full_df = pd.merge(merged_df, date_df)
 print('Overview:')
-print(merged_df.shape)
-print(merged_df.head())
+print(full_df.shape)
+print(full_df.head())

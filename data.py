@@ -85,8 +85,6 @@ class DataManager():
         df['stepCount'] = df['stepCount'].fillna(0)
         df['activeEnergyBurned(kal)'] = df['activeEnergyBurned(kal)'].fillna(
             0.0)
-        df['walkingRunningDistance(m)'] = df['walkingRunningDistance(m)'].fillna(
-            0.0)
         df['walkingRunningDistance(km)'] = df['walkingRunningDistance(km)'].fillna(
             0.0)
         return df.dropna()
@@ -100,6 +98,31 @@ class DataFormatter():
         date = date.dt.tz_localize(None)
         date = date.dt.floor('Min')
         df['date'] = date.dt.floor('d')
-        df['weekday'] = date.dt.weekday
+        df['weekday'] = date.dt.weekday.astype('category')
         df['startTime'] = date.dt.time
         return df
+
+    @classmethod
+    def date_df(self, merged_df):
+        avg_hr_date = pd.DataFrame(merged_df.groupby(['date'])[
+            'heartRate(BPM)'].mean())
+        total_sc_date = pd.DataFrame(
+            merged_df.groupby(['date'])['stepCount'].sum())
+        total_aeb_date = pd.DataFrame(merged_df.groupby(
+            ['date'])['activeEnergyBurned(kal)'].sum())
+        total_wd_date = pd.DataFrame(merged_df.groupby(
+            ['date'])['walkingRunningDistance(km)'].sum())
+        total_st_date = pd.DataFrame(merged_df.groupby(['date'])[
+            'standTime(min)'].sum())
+
+        df_list = [avg_hr_date, total_sc_date,
+                   total_aeb_date, total_wd_date, total_st_date]
+
+        date_df = DataManager.merge(df_list).reset_index()
+        return date_df.rename(columns={
+            'heartRate(BPM)': 'heartRateAvg(BPM)',
+            'stepCount': 'stepCountSum',
+            'activeEnergyBurned(kal)': 'activeEnergyBurnedSum(kal)',
+            'walkingRunningDistance(km)': 'walkingRunningDistanceSum(km)',
+            'standTime(min)': 'standTimeSum(min)'
+        })
