@@ -1,5 +1,5 @@
 # Explore iOS health
-### Manage, explore, visualize, and model data from the iOS health app
+### Explore and visualize data from the iOS health app
 
 <img src="https://github.com/stoffy/ios_health_analysing/blob/master/health-app-icon.png" alt="iOS health app">
 
