@@ -59,11 +59,11 @@ The complete list may vary between iOS versions:
 ### Visiualize your data to understand it better
 <img src="https://github.com/stoffy/ios-health-explorer/blob/master/images/health_type_pie.png" alt="Health data types">
 
-<img src="https://github.com/stoffy/ios-health-explorer/blob/master/images/heart_walk_steps.png" alt="Heart rate, walking and steps chart">
+<img src="https://github.com/stoffy/ios-health-explorer/blob/master/images/collection.png" alt="Heart rate, walking, steps and chart">
 
-<img src="https://github.com/stoffy/ios-health-explorer/blob/master/images/heart_rate_day.png" alt="Heart rate over a day chart">
+<img src="https://github.com/stoffy/ios-health-explorer/blob/master/images/over_day.png" alt="Over a day charts">
 
-<img src="https://github.com/stoffy/ios-health-explorer/blob/master/images/steps_weeks.png" alt="Steps heatmap">
+<img src="https://github.com/stoffy/ios-health-explorer/blob/master/images/heatmaps.png" alt="Heatmaps">
 
 
 For more information on the Apple health app visit: [https://www.apple.com/ios/health/](https://www.apple.com/ios/health/)
