@@ -34,7 +34,6 @@ The complete list may vary between iOS versions:
 `HKQuantityTypeIdentifierWalkingHeartRateAverage`,
 `HKQuantityTypeIdentifierRestingHeartRate`,
 `HKCategoryTypeIdentifierMindfulSession`,
-`HKQuantityTypeIdentifierSixMinuteWalkTestDistance`,
 `HKQuantityTypeIdentifierDietaryWater`,
 `HKQuantityTypeIdentifierFlightsClimbed`,
 `HKQuantityTypeIdentifierLeanBodyMass`,
